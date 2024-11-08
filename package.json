@@ -1,0 +1,29 @@
+{
+  "name": "api.pixelartavenue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louis-stintzy/api.pixelartavenue.git"
+  },
+  "keywords": [
+    "pixel",
+    "art"
+  ],
+  "author": "louis stintzy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/louis-stintzy/api.pixelartavenue/issues"
+  },
+  "homepage": "https://github.com/louis-stintzy/api.pixelartavenue#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
