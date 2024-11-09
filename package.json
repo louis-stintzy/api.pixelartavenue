@@ -27,13 +27,15 @@
   "homepage": "https://github.com/louis-stintzy/api.pixelartavenue#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
+    "@types/pg": "^8.11.10",
     "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",

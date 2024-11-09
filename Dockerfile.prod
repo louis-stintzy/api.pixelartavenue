@@ -1,0 +1,16 @@
+FROM node:18 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM node:18-slim
+LABEL app="Pixel Art Avenue (API)"
+RUN addgroup -g 1598 pixelartgroup && adduser -D -u 1599 -G pixelartgroup pixelartuser
+USER pixelartuser
+WORKDIR /app
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+EXPOSE 3101
+CMD ["node", "dist/index.js"]

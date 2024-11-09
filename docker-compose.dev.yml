@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: pixelartavenue_db_container_dev
+    restart: always
+    env_file:
+      - .env    
+    volumes:
+       - pixelartavenue_db_data_dev:/var/lib/postgresql/data
+    ports: 
+      - "5433:5432"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: pixelartavenue_api_container_dev
+    restart: always
+    environment:
+      - .env
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+volumes:
+  pixelartavenue_db_data_dev:
+    driver: local
+    name: pixelartavenue_db_data_dev
+
+
+networks:
+  default:
+    external:
+      name: pixelartavenue_network
