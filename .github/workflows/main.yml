@@ -27,6 +27,8 @@ jobs:
             with:
                 context: .
                 push: true
+                file: ./Dockerfile
+                target: prod
                 tags: ${{ secrets.DOCKER_USERNAME }}/api.pixelartavenue:latest
 
     deploy:

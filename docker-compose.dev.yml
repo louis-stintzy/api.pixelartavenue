@@ -21,7 +21,7 @@ services:
     environment:
       - .env
     ports:
-      - "8081:8080"
+      - "3101:3101"
     depends_on:
       - db
     volumes:
