@@ -1,5 +1,5 @@
 # Base stage
-FROM node:18 AS base
+FROM node:20-alpine AS base
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -16,7 +16,7 @@ FROM base AS build
 RUN npm run build
 
 # Production stage
-FROM node:18-slim AS prod
+FROM node:20-alpine AS prod
 LABEL app="Pixel Art Avenue (API)"
 RUN addgroup -g 1598 pixelartgroup && adduser -D -u 1599 -G pixelartgroup pixelartuser
 USER pixelartuser
