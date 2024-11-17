@@ -50,7 +50,9 @@ jobs:
               host: ${{ secrets.SSH_HOST }}
               username: ${{ secrets.SSH_USER }}
               key: ${{ secrets.SSH_PRIVATE_KEY }}
-              source: './docker-compose.prod.yml ./.env'
+              source: |
+                ./docker-compose.prod.yml
+                ./.env
               target: '/home/${{ secrets.SSH_USER }}/pixelartproject/api.pixelartavenue'
     
           - name: Deploy to VPS
