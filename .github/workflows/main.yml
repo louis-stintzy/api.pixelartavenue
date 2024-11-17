@@ -43,16 +43,26 @@ jobs:
             uses: webfactory/ssh-agent@v0.9.0
             with:
               ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          - name: List files for debug
+            run: ls -al    
     
-          - name: Copy files to server
+          - name: Copy docker-compose file
             uses: appleboy/scp-action@v0.1.7
             with:
               host: ${{ secrets.SSH_HOST }}
               username: ${{ secrets.SSH_USER }}
               key: ${{ secrets.SSH_PRIVATE_KEY }}
-              source: |
-                ./docker-compose.prod.yml
-                ./.env
+              source: './docker-compose.prod.yml'
+              target: '/home/${{ secrets.SSH_USER }}/pixelartproject/api.pixelartavenue'
+
+          - name: Copy .env file
+            uses: appleboy/scp-action@v0.1.7
+            with:
+              host: ${{ secrets.SSH_HOST }}
+              username: ${{ secrets.SSH_USER }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              source: './.env'
               target: '/home/${{ secrets.SSH_USER }}/pixelartproject/api.pixelartavenue'
     
           - name: Deploy to VPS
