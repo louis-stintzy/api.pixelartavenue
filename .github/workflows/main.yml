@@ -44,13 +44,13 @@ jobs:
             with:
               ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     
-          - name: Copy docker-compose file
+          - name: Copy files to server
             uses: appleboy/scp-action@v0.1.7
             with:
               host: ${{ secrets.SSH_HOST }}
               username: ${{ secrets.SSH_USER }}
               key: ${{ secrets.SSH_PRIVATE_KEY }}
-              source: './docker-compose.prod.yml'
+              source: './docker-compose.prod.yml ./.env'
               target: '/home/${{ secrets.SSH_USER }}/pixelartproject/api.pixelartavenue'
     
           - name: Deploy to VPS
