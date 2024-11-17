@@ -11,7 +11,7 @@ services:
        - pixelartavenue_db_data_prod:/var/lib/postgresql/data
 
   api:
-    image: lstz/pixelartavenue_api:latest
+    image: lstz/api.pixelartavenue:latest
     container_name: pixelartavenue_api_container_prod
     restart: always
     environment:
@@ -30,4 +30,4 @@ volumes:
 networks:
   default:
     external:
-      name: pixelartavenue_network
+      name: pixelart-network
