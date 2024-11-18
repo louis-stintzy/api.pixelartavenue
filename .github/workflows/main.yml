@@ -74,9 +74,9 @@ jobs:
             run: |
               ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
               cd /home/${{ secrets.SSH_USER }}/pixelartproject/api.pixelartavenue
-              docker-compose -f docker-compose.prod.yml down
-              docker-compose -f docker-compose.prod.yml pull
-              docker-compose -f docker-compose.prod.yml up -d
+              docker compose -f docker-compose.prod.yml down
+              docker compose -f docker-compose.prod.yml pull
+              docker compose -f docker-compose.prod.yml up -d
               EOF
 
 # Penser que le fichier .env est saisi manuellement dans le serveur distant.

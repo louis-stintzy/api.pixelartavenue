@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15
@@ -29,5 +27,5 @@ volumes:
 
 networks:
   default:
-    external:
-      name: pixelart-network
+    name: pixelart-network
+    external: true
