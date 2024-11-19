@@ -7,8 +7,6 @@ services:
       - .env
     volumes:
       - pixelartavenue_db_data_dev:/var/lib/postgresql/data
-    ports:
-      - '5433:5432'
 
   api:
     build:
@@ -20,16 +18,32 @@ services:
     env_file:
       - .env
     ports:
-      - '3102:3101'
+      - '3111:3101'
     depends_on:
       - db
     volumes:
       - .:/app
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pixelartavenue_pgadmin_container_dev
+    restart: always
+    env_file:
+      - .env.pgadmin
+    ports:
+      - '3112:80'
+    depends_on:
+      - db
+    volumes:
+      - pixelartavenue_pgadmin_data_dev:/var/lib/pgadmin
+
 volumes:
   pixelartavenue_db_data_dev:
     driver: local
     name: pixelartavenue_db_data_dev
+  pixelartavenue_pgadmin_data_dev:
+    driver: local
+    name: pixelartavenue_pgadmin_data_dev
 
 networks:
   default:

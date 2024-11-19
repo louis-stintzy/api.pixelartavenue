@@ -4,9 +4,9 @@ services:
     container_name: pixelartavenue_db_container_prod
     restart: always
     env_file:
-      - .env    
+      - .env
     volumes:
-       - pixelartavenue_db_data_prod:/var/lib/postgresql/data
+      - pixelartavenue_db_data_prod:/var/lib/postgresql/data
 
   api:
     image: lstz/api.pixelartavenue:latest
@@ -15,15 +15,30 @@ services:
     env_file:
       - .env
     ports:
-      - "3101:3101"
+      - '3101:3101'
     depends_on:
       - db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pixelartavenue_pgadmin_container_prod
+    restart: always
+    env_file:
+      - .env.pgadmin
+    ports:
+      - '3102:80'
+    depends_on:
+      - db
+    volumes:
+      - pixelartavenue_pgadmin_data_prod:/var/lib/pgadmin
 
 volumes:
   pixelartavenue_db_data_prod:
     driver: local
     name: pixelartavenue_db_data_prod
-
+  pixelartavenue_pgadmin_data_prod:
+    driver: local
+    name: pixelartavenue_pgadmin_data_prod
 
 networks:
   default:
